@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+}
+#todos {
+  list-style-type: none;
+  padding-left: 0;
+}
+label.checked { 
+  text-decoration: line-through;
+}
