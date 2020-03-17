@@ -1,3 +1,4 @@
+,
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,11 +10,25 @@
     <h1>Todo List</h1>
     <form>
       <p>
-        <label>Add todo: <input type="text" name="text"/></label>
+        <label
+          >Add todo:
+          <input type="text" name="text" placeholder="Insert task" required
+        /></label>
         <button>Add</button>
       </p>
+      <!--<p>
+        <label
+          >Priority:
+          <input type="range" name="Priority" min="0" max="4" step="1" value="2"
+        /></label>
+      </p>-->
     </form>
     <ul id="todos"></ul>
+    <form id="clear">
+      <p>
+        <button>Clear</button>
+      </p>
+    </form>
     <script src="main.js"></script>
   </body>
 </html>

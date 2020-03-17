@@ -1,34 +1,46 @@
 const todos = [
-  { text: "Corregir la tarea 1", done: true },
-  { text: "Preparar bundles", done: false }
+  { text: "Corregir la tarea 1", done: false },
+  { text: "Preparar bundles", done: false },
+  { text: "Pedir neopreno", done: true },
+  { text: "Pedir pizza", done: true },
+  { text: "Pedir piezas", done: false },
+  { text: "Comprar tomates", done: true }
 ];
 
-// TODO: Botón de "clear checked" que borra los marcados
+const formclear = document.getElementById("clear");
 
-const ul = document.getElementById('todos');
+const ul = document.getElementById("todos");
 const form = document.forms[0];
 const textinput = document.querySelector('form input[name="text"]');
 
-form.addEventListener('submit', event => {
+formclear.addEventListener("submit", event => {
+  event.preventDefault();
+  let todosclear = todos.filter(t => t.done === false);
+  todos.splice(0, todos.length);
+  todosclear.forEach(t => todos.push(t));
+  render();
+});
+
+form.addEventListener("submit", event => {
   event.preventDefault();
   todos.push({ text: textinput.value, done: false });
   render();
-  textinput.value = '';
+  textinput.value = "";
 });
 
-const renderTodo = (todo) => {
-  let li = document.createElement('li');
+const renderTodo = todo => {
+  let li = document.createElement("li");
   li.innerHTML = `
     <label>
-      <input type="checkbox" ${todo.done ? 'checked' : ''}>
+      <input type="checkbox" ${todo.done ? "checked" : ""}>
       ${todo.text}
     </label>
   `;
-  const label = li.querySelector('label');
+  const label = li.querySelector("label");
   const checkbox = li.querySelector('input[type="checkbox"]');
 
   if (todo.done) {
-    label.classList.add('checked');
+    label.classList.add("checked");
   }
 
   //
@@ -36,20 +48,33 @@ const renderTodo = (todo) => {
   // indica cuando ha habito "entrada del usuario" como que el label está
   // asociado al checkbox también produce este evento
   //
-  checkbox.addEventListener('input', event => {
-    console.log(event);
+  checkbox.addEventListener("input", event => {
+    event.preventDefault();
     todo.done = !todo.done;
     // TODO(hard): No repintar todo sino solo este elemento cuando clicas
-    console.log(todos);
-    render();
+    //render();
+    linerender(todo, li, label);
   });
-  
+
   return li;
-}
+};
+
+const linerender = (todo, li, label) => {
+  li.textContent = "";
+  console.log(label);
+  li.innerHTML =`
+  <label>
+    <input type="checkbox" ${todo.done ? "checked" : ""}>
+    ${todo.text}
+  </label>
+`;
+  if (todo.done) {
+  }
+};
 
 const render = () => {
-  ul.textContent = '';
+  ul.textContent = "";
   ul.append(...todos.map(renderTodo));
-}
+};
 
 render();
