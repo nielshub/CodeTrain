@@ -37,6 +37,7 @@ const renderTodo = todo => {
     </label>
   `;
   const label = li.querySelector("label");
+  // Para que queremos checkbox?
   const checkbox = li.querySelector('input[type="checkbox"]');
 
   if (todo.done) {
@@ -48,27 +49,34 @@ const renderTodo = todo => {
   // indica cuando ha habito "entrada del usuario" como que el label está
   // asociado al checkbox también produce este evento
   //
-  checkbox.addEventListener("input", event => {
-    event.preventDefault();
-    todo.done = !todo.done;
-    // TODO(hard): No repintar todo sino solo este elemento cuando clicas
-    //render();
-    linerender(todo, li, label);
-  });
 
+  // TODO(hard): No repintar todo sino solo este elemento cuando clicas
+
+  label.addEventListener("input", toggleClassHandler("checked", todo));
   return li;
 };
+
+const toggleClassHandler = (_class, todo) =>
+  function(event) {
+    todo.done = !todo.done;
+    if (this.classList.contains(_class)) {
+      this.classList.remove(_class);
+    } else {
+      this.classList.add(_class);
+    }
+  };
 
 const linerender = (todo, li, label) => {
   li.textContent = "";
   console.log(label);
-  li.innerHTML =`
+  li.innerHTML = `
   <label>
     <input type="checkbox" ${todo.done ? "checked" : ""}>
     ${todo.text}
   </label>
 `;
   if (todo.done) {
+    label.className = "checked";
   }
 };
 
