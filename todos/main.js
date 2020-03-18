@@ -7,13 +7,13 @@ const todos = [
   { text: "Comprar tomates", done: true }
 ];
 
-const formclear = document.getElementById("clear");
+const buttonclear = document.getElementById("clear");
 
 const ul = document.getElementById("todos");
 const form = document.forms[0];
 const textinput = document.querySelector('form input[name="text"]');
 
-formclear.addEventListener("submit", event => {
+buttonclear.addEventListener("click", event => {
   event.preventDefault();
   let todosclear = todos.filter(t => t.done === false);
   todos.splice(0, todos.length);
@@ -37,8 +37,6 @@ const renderTodo = todo => {
     </label>
   `;
   const label = li.querySelector("label");
-  // Para que queremos checkbox?
-  const checkbox = li.querySelector('input[type="checkbox"]');
 
   if (todo.done) {
     label.classList.add("checked");
@@ -57,7 +55,7 @@ const renderTodo = todo => {
 };
 
 const toggleClassHandler = (_class, todo) =>
-  function(event) {
+  function() {
     todo.done = !todo.done;
     if (this.classList.contains(_class)) {
       this.classList.remove(_class);
@@ -65,20 +63,6 @@ const toggleClassHandler = (_class, todo) =>
       this.classList.add(_class);
     }
   };
-
-const linerender = (todo, li, label) => {
-  li.textContent = "";
-  console.log(label);
-  li.innerHTML = `
-  <label>
-    <input type="checkbox" ${todo.done ? "checked" : ""}>
-    ${todo.text}
-  </label>
-`;
-  if (todo.done) {
-    label.className = "checked";
-  }
-};
 
 const render = () => {
   ul.textContent = "";
