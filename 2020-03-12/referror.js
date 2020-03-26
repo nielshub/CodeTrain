@@ -8,7 +8,7 @@ function recur() {
 }
 
 try {
-  showA();
+  //showA();
   recur();
 } catch (e) {
   switch (e.constructor) {

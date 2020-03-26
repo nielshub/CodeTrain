@@ -16,6 +16,7 @@ const textinput = document.querySelector('form input[name="text"]');
 buttonclear.addEventListener("click", event => {
   event.preventDefault();
   let todosclear = todos.filter(t => t.done === false);
+  // todos = = todos.filter(t => t.done === false); Mejor opcion!
   todos.splice(0, todos.length);
   todosclear.forEach(t => todos.push(t));
   render();

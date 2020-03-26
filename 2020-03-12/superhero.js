@@ -3,16 +3,20 @@ class Person {
     this.__name = name;
     this.age = age;
   }
-  get name() { return this.__name; }
-  set name(newName) { 
+  get namet() {
+    return this.__name;
+  }
+  set namet(newName) {
     console.log(`You have change the name from ${this.__name} to ${newName}`);
-    this.__name = newName; 
+    this.__name = newName;
   }
 
-  get fullName() { return `${this.__name} Fernández`; }
+  get fullName() {
+    return `${this.__name} Fernández`;
+  }
 
   sayHi() {
-    console.log(`Hi, I'm ${this.name} and I'm ${this.age} years old`);
+    console.log(`Hi, I'm ${this.namet} and I'm ${this.age} years old`);
   }
 }
 
@@ -27,13 +31,15 @@ class Superhero extends Person {
 }
 
 let person = new Person("James", 27);
-let mrIncredible = new Superhero('Bob', 52, 'Mr. Incredible');
+let mrIncredible = new Superhero("Bob", 52, "Mr. Incredible");
 
-const getName = (person) => {
-  console.log(`This person has name ${person.name}`);
-}
+const getName = person => {
+  console.log(`This person has name ${person.namet}`);
+};
 
+
+mrIncredible.namet = "Robert";
 getName(mrIncredible);
-mrIncredible.name = 'Robert';
 console.log(mrIncredible);
 console.log(mrIncredible.fullName);
+mrIncredible.sayHi();

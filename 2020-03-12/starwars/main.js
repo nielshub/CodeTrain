@@ -10,8 +10,8 @@ class StarWarsPerson {
   }
 
   static fromJSON(json) {
-    const { name, mass: weight, url, gender } = json;
-    return new StarWarsPerson(name, weight, url, gender);
+    const { name, mass: weight, url, gender, birth_year: birthYear } = json;
+    return new StarWarsPerson(name, weight, url, gender, birthYear);
   }
 }
 
