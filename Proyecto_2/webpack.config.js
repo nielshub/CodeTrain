@@ -1,5 +1,6 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -10,6 +11,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: "babel-loader"
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       },
@@ -19,5 +25,15 @@ module.exports = {
       }
     ]
   },
-  plugins: [new CopyWebpackPlugin([{ from: "src/images", to: "images" }])],
+  plugins: [
+    new CopyWebpackPlugin([
+      { from: "src/images", to: "images" },
+      { from: "src/style.css", to: "style.css" },
+      { from: "src/cartas/jpeg", to: "cartas/jpeg" }
+    ]),
+    new HtmlWebpackPlugin({
+      title: "Juego de Póker",
+      template: "src/index.html"
+    })
+  ]
 };

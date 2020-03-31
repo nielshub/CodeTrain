@@ -1,9 +1,10 @@
 import * as CardFuncs from "./CardFuncs.js";
 import './style.css';
-import _ from 'lodash';
-console.log("HI")
+// import _ from 'lodash';
 
-//Added functionality to arrays to remove repeated cards
+// console.log("HI")
+
+// Added functionality to arrays to remove repeated cards
 Array.prototype.unique = (function(a) {
   return function() {
     return this.filter(a);
@@ -78,7 +79,7 @@ form.addEventListener("submit", event => {
           <span class = "CardHandFont">Cards for player ${Player[i].name}</span>
           <div class = "Card2">
                 <div class="Card">
-                    <img src="cartas/JPEG/${CardFuncs.TranslatorCard.CardNumber(
+                    <img src="cartas/jpeg/${CardFuncs.TranslatorCard.CardNumber(
                       Player[i].Card1
                     )}${CardFuncs.TranslatorCard.FamilyEnglish(
       Player[i].Card1
@@ -87,7 +88,7 @@ form.addEventListener("submit", event => {
                     width="100">
                 </div>
                 <div class="Card">
-                    <img src="cartas/JPEG/${CardFuncs.TranslatorCard.CardNumber(
+                    <img src="cartas/jpeg/${CardFuncs.TranslatorCard.CardNumber(
                       Player[i].Card2
                     )}${CardFuncs.TranslatorCard.FamilyEnglish(
       Player[i].Card2
@@ -104,7 +105,7 @@ form.addEventListener("submit", event => {
     CardShowdown.className = "CardShowdown";
     CardShowdown.innerHTML = `
             <div class = "bouncy" style="animation-delay:${i*0.07}s">
-                <img src="cartas/JPEG/Gray_back.jpg"
+                <img src="cartas/jpeg/Gray_back.jpg"
                 height="250"
                 width="150">
             </div>`;
@@ -121,7 +122,7 @@ form.addEventListener("submit", event => {
       CardShowdown.innerHTML = ``;
       CardShowdown.innerHTML = `
             <div>
-                    <img src="cartas/JPEG/${CardFuncs.TranslatorCard.CardNumber(
+                    <img src="cartas/jpeg/${CardFuncs.TranslatorCard.CardNumber(
                       CardShowup[i].Card
                     )}${CardFuncs.TranslatorCard.FamilyEnglish(
         CardShowup[i].Card
@@ -206,7 +207,7 @@ formCheck.addEventListener("submit", event => {
     CardShow.className = "CardShowdown";
     CardShow.innerHTML = `
             <div>
-                    <img src="cartas/JPEG/${CardFuncs.TranslatorCard.CardNumber(
+                    <img src="cartas/jpeg/${CardFuncs.TranslatorCard.CardNumber(
                       CardShowup[i].Card
                     )}${CardFuncs.TranslatorCard.FamilyEnglish(
       CardShowup[i].Card
