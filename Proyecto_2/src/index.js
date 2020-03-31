@@ -1,8 +1,5 @@
 import * as CardFuncs from "./CardFuncs.js";
 import './style.css';
-// import _ from 'lodash';
-
-// console.log("HI")
 
 // Added functionality to arrays to remove repeated cards
 Array.prototype.unique = (function(a) {
@@ -63,6 +60,7 @@ CardFuncs.removeChildren(CardTable);
 form.addEventListener("submit", event => {
   event.preventDefault();
   Cards = [];
+  Player = [];
   CardShowTable = [];
   let gameplayers = Number(players.value);
   //Clean all table
