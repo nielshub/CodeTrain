@@ -1,0 +1,35 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Iphone",
+      "shopId": 1,
+      "shopID": 1
+    },
+    {
+      "id": 2,
+      "name": "ps4",
+      "shopId": 2
+    },
+    {
+      "id": 3,
+      "name": "smartphone",
+      "shopId": 1
+    },
+    {
+      "id": 4,
+      "name": "printer",
+      "shopId": 2
+    }
+  ],
+  "shops": [
+    {
+      "id": 1,
+      "Location": "Barcelona"
+    },
+    {
+      "id": 2,
+      "Location": "Madrid"
+    }
+  ]
+}
