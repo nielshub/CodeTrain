@@ -37,12 +37,14 @@ export default class View {
       if (this.presenter) {
         this.presenter.onAdd(input.value);
       }
+      input.value = "";
     });
 
     return form;
   }
 
   _buildList() {
+    let tmpText = "";
     this.ul = _make("ul", "todo-list");
 
     // Evento de borrado (click a botón en los ítems)
@@ -53,6 +55,28 @@ export default class View {
         if (this.presenter) {
           this.presenter.onRemove(i);
         }
+      }
+      if (e.target.type === "checkbox") {
+        const i = parseInt(e.target.parentElement.id);
+        console.log("checkeando ", i);
+        if (this.presenter) {
+          this.presenter.onToggle(i);
+        }
+      }
+    });
+
+    this.ul.addEventListener("input", (e) => {
+      if (e.target.contentEditable === "true") {
+        tmpText = e.target.innerText;
+      }
+    });
+
+    this.ul.addEventListener("focusout", (e) => {
+      if (tmpText && this.presenter) {
+        const i = parseInt(e.target.parentElement.id);
+        console.log("Editando ", i, " con texto ", tmpText);
+        this.presenter.onEdit(i, tmpText);
+        tmpText = "";
       }
     });
 
@@ -69,6 +93,7 @@ export default class View {
 
     const text = _make("span");
     text.textContent = todo.text;
+    text.contentEditable = true;
     if (todo.done) {
       text.classList.add("done");
     }

@@ -21,7 +21,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: "./dist",
-    open: "chromium-browser",
+    open: "chrome",
   },
   output: {
     filename: "main.js",

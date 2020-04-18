@@ -19,4 +19,12 @@ export default class Presenter {
   onRemove(i) {
     this.model.remove(i);
   }
+
+  onToggle(i) {
+    this.model.toggle(i);
+  }
+
+  onEdit(i, text) {
+    this.model.edit(i, text);
+  }
 }

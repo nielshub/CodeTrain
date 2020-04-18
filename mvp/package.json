@@ -9,7 +9,9 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server"
   },
-  "keywords": ["MVP"],
+  "keywords": [
+    "MVP"
+  ],
   "author": "Pau Fernández <pau.fernandez@upc.edu>",
   "license": "ISC",
   "devDependencies": {
